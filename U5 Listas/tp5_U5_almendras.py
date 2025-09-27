@@ -285,27 +285,31 @@ print()
 print("Ejercicio 10")
 print()
 
-lista_10 = [[[] for j in range(7)] for i in range(4)]
-total_prod1 = 0
-total_prod2 = 0
-total_prod3 = 0
-total_prod4 = 0
-cont_dia_mas_vendido = -1
-dia_mas_vendido = -1
+lista_10 = [[0 for j in range(7)] for i in range(4)] 
+cantidad_por_prod_por_semana = [0, 0, 0, 0]
+cantidad_ventas_por_dia = [0, 0, 0, 0, 0, 0, 0]
+i_dia_mas_vendido = -1
+mayor_dia = -1
+mayor_prod = -1
+i_prod_mas_vendido = -1
+
 for i in range(4):
     for j in range(7):
-        venta = random.uniform(10, 250)
-        venta = round(venta, 2)
-        lista_10[i][j].append(venta)
+        venta = round(random.uniform(20, 250),2)
+        lista_10[i][j] = venta
+        cantidad_por_prod_por_semana[i] += venta
+        cantidad_ventas_por_dia[j] += venta
 
-for i in range(len(lista_10[0])):
-    for j in range(len(lista_10)):
-        if i == 0:
-            total_prod1 += lista_10[0][j]
-        elif i == 1:
-            total_prod1 += lista_10[1][j]
-        elif i == 2:
-            total_prod1 += lista_10[2][j]
-        elif i == 3:
-            total_prod1 += lista_10[3][j]
+for i in range(len(cantidad_por_prod_por_semana)):
+    if mayor_prod <= cantidad_por_prod_por_semana[i]:
+        mayor_prod = cantidad_por_prod_por_semana[i]
+        i_prod_mas_vendido = i
+    print("El total vendido del Producto", (i + 1), "es de: ", cantidad_por_prod_por_semana[i])
+    
+for i in range(len(cantidad_ventas_por_dia)):
+    if mayor_dia <= cantidad_ventas_por_dia[i]:
+        mayor_dia = cantidad_ventas_por_dia[i]
+        i_dia_mas_vendido = i
         
+print("El día con más ventas fue el día ", (i_dia_mas_vendido + 1))
+print("El producto más vendido fue el Producto", (i_prod_mas_vendido + 1))
