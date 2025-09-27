@@ -1,5 +1,4 @@
 import random
-'''
 print("Trabajo Práctico 5")
 print()
 
@@ -281,17 +280,32 @@ while not band_gano:
 
 print("Juego Terminado!")
 print()
-'''
+
 # Ejercicio 10
 print("Ejercicio 10")
 print()
 
 lista_10 = [[[] for j in range(7)] for i in range(4)]
-
+total_prod1 = 0
+total_prod2 = 0
+total_prod3 = 0
+total_prod4 = 0
+cont_dia_mas_vendido = -1
+dia_mas_vendido = -1
 for i in range(4):
     for j in range(7):
         venta = random.uniform(10, 250)
         venta = round(venta, 2)
         lista_10[i][j].append(venta)
 
-print(lista_10)
+for i in range(len(lista_10[0])):
+    for j in range(len(lista_10)):
+        if i == 0:
+            total_prod1 += lista_10[0][j]
+        elif i == 1:
+            total_prod1 += lista_10[1][j]
+        elif i == 2:
+            total_prod1 += lista_10[2][j]
+        elif i == 3:
+            total_prod1 += lista_10[3][j]
+        
